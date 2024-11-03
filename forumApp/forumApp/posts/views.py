@@ -1,5 +1,6 @@
 from datetime import datetime, time
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import modelform_factory
 from django.http import HttpResponseNotAllowed, HttpResponse
 from django.shortcuts import render, redirect
@@ -30,10 +31,11 @@ class BaseView:
         elif request.method == "POST":
             return self.post(request, *args, **kwargs)
 
+
 @method_decorator(measure_execution_time, name='dispatch')
-class IndexView(TimeRestrictedMixin, TemplateView):
+class IndexView(TemplateView):
     template_name = 'common/index.html'  # static way
-    end_time = time(21, 43)
+    # end_time = time(23, 59)
     extra_context = {
         'static_time': datetime.now(),
     }  # static way
@@ -50,6 +52,7 @@ class IndexView(TimeRestrictedMixin, TemplateView):
             return ['common/index_logged_in.html']
         else:
             return ['common/index.html']
+
 
 class DashboardView(ListView, FormView):
     template_name = 'posts/dashboard.html'
@@ -69,7 +72,7 @@ class DashboardView(ListView, FormView):
         return queryset
 
 
-class AddPostView(CreateView):
+class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostCreateForm
     template_name = 'posts/add-post.html'
@@ -86,7 +89,6 @@ class EditPostView(UpdateView):
             return modelform_factory(Post, fields=('title', 'content', 'author', 'languages'))
         else:
             return modelform_factory(Post, fields=('content',))
-
 
 
 class PostDetailView(DetailView):
@@ -150,6 +152,7 @@ class DeletePostView(DeleteView, FormView):
         pk = self.kwargs.get(self.pk_url_kwarg)
         post = Post.objects.get(pk=pk)
         return post.__dict__
+
 
 class RedirectHomeView(RedirectView):
     url = reverse_lazy('index')  # static way
