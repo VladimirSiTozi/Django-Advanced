@@ -48,7 +48,8 @@ INSTALLED_APPS = [
 
     # My apps
     "forumApp.posts",
-    "forumApp.accounts.apps.AccountsConfig"
+    "forumApp.accounts.apps.AccountsConfig",
+    "forumApp.common.apps.CommonConfig"
 ]
 
 MIDDLEWARE = [
