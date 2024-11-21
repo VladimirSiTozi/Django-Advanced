@@ -29,11 +29,7 @@ def list_books_view(request):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# @extend_schema - For Swagger
-@extend_schema(
-    request=BookSerializer,
-    responses={201: BookSerializer, 400: BookSerializer}
-)
+
 class ListBooksView(APIView):  # APIView is the base class same as View in Django
 
     def get(self, request):

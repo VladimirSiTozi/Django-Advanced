@@ -13,20 +13,12 @@ class Book(models.Model):
         default='',
     )
 
-    author = models.ManyToManyField(
-        to='Author',
-        related_name='books',
+    author = models.CharField(
+        max_length=50,
     )
 
     def __str__(self):
         return self.title
 
 
-class Author(models.Model):
-    name = models.CharField(
-        max_length=100,
-    )
-
-    def __str__(self):
-        return self.name
 
