@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000/3000",
+]
+
 PROJECT_APPS = [
     "toDoApp.accounts.apps.AccountsConfig",
 ]
@@ -45,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',  #  pip install django-restframework
     'drf_spectacular',  # pip install drf-spectacular
     'rest_framework_simplejwt',  #  pip install djangorestframework-simplejwt
+    'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',  #  pip install django-cors-headers
 ] + PROJECT_APPS
 
 # accessToken -> used for Log in - 5/10/15 minutes
@@ -59,6 +65,11 @@ REST_FRAMEWORK = {
     ],
 }
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),  # Usually 5, 10, 15 minutes
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),  # Usually between 1 day and 2 weeks
+}
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Todo App',
     'DESCRIPTION': 'The best todo app ever',
@@ -67,6 +78,7 @@ SPECTACULAR_SETTINGS = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

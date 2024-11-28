@@ -28,7 +28,14 @@ class LoginResponseSerializer(serializers.Serializer):
     message = serializers.CharField()
 
 
-
 """
 UserModel.objects.create_user(**credentials)
 """
+
+
+class LogoutRequestSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+
+class LogoutResponseSerializer(serializers.Serializer):
+    message = serializers.CharField()
