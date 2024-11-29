@@ -31,11 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000/3000",
+    "http://127.0.0.1:8000",
 ]
 
 PROJECT_APPS = [
     "toDoApp.accounts.apps.AccountsConfig",
+    'toDoApp.todos',
 ]
 
 INSTALLED_APPS = [
