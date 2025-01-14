@@ -1,10 +1,26 @@
 # Django-Advanced
 
 
-# Plans
+### Plans
+1. [Authentication and Autorization](#01-authentication-and-autorization)
+
+2. [User Model and Password Managementn](#02-user-model-an-password-management)
+
+3. [Extending the user model](#03-extending-the-user-model)
+
+4. [Django Middlewares and Sessions](#04-django-middlewares-and-sessions)
+
+5. [Django REST Basics](#05-django-rest-basics)
+
+6. [Django REST Advanced](#06-django-rest-advanced)
+
+7. [Async Operations](#07-async-operations)
+
+8. [Deployment Setup](#08-deployment-setup)
 
 
-### Authentication and Autorization
+
+### 01. Authentication and Autorization
 
 1. Какво означават?
    - Ауторизация е проверката за това какви права иначе като потребители
@@ -57,7 +73,7 @@
    
 ---
 
-### User Model and Password Management
+### 02. User Model and Password Management
 
 1. Built-in Django User
    - User(AbstractUser)
@@ -124,7 +140,7 @@
 ---
 
 
-### Extending the user model
+### 03. Extending the user model
 
 `AUTH_USER_MODEL = 'path.to.my.model'`
 
@@ -351,7 +367,7 @@
 ---
 
 
-### Django Middlewares and Sessions
+### 04. Django Middlewares and Sessions
 
 1. Какво е Middleware?
    - Функционалност, която се изпълнява преди и/или след **всеки** рекуест
@@ -496,7 +512,7 @@
 
 ---
 
-### Django REST Basics
+### 05. Django REST Basics
 
 1. Какво е API?
    - Application Programing Interface
@@ -753,7 +769,7 @@
 
 ---
 
-### Django REST Advanced
+### 06. Django REST Advanced
 
 1. Видове сериалайзъри
    1. Serializer
@@ -1038,7 +1054,7 @@
 ---
 
 
-### Async Operations
+### 07. Async Operations
 
 1. Django по дефиниция е синхронно
    - Много потребители изпращат заявка към един сървър едновременно.
@@ -1211,7 +1227,7 @@
 
 ---
 
-### Deployment Setup
+### 08. Deployment Setup
 
 1. Guinicorn
    - Не е добра идея да стартираме проекта ни в продъкшън с manage.py поради:
