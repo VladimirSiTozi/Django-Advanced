@@ -4,7 +4,7 @@
 ### Plans
 1. [Authentication and Autorization](#01-authentication-and-autorization)
 
-2. [User Model and Password Managementn](#02-user-model-an-password-management)
+2. [User Model and Password Management](#02-user-model-an-password-management)
 
 3. [Extending the user model](#03-extending-the-user-model)
 
